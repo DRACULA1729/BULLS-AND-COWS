@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bulls and Cows - Game</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #48506141;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .btn-primary {
+            background-color: #8b8676;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #666c6e;
+        }
+        .error {
+            color: red;
+        }
+        .success {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">Guess the Secret Number!</h2>
+                {% if error %}
+                    <p class="error">{{ error }}</p>
+                {% endif %}
+                {% if success %}
+                    <p class="success">{{ success }}</p>
+                {% endif %}
+                <form method="POST" action="/game">
+                    <div class="mb-3">
+                        <input type="text" name="guess" class="form-control" placeholder="Enter your guess" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit Guess</button>
+                </form>
+                <hr>
+                <h5>Previous Guesses:</h5>
+                <ul class="list-group">
+                    {% for g in guesses %}
+                        <li class="list-group-item">
+                            Guess: {{ g.guess }} - {{ g.bulls }} Bulls, {{ g.cows }} Cows
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
