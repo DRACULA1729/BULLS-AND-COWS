@@ -37,7 +37,7 @@ A Flask-based web application for the number-guessing game **Bulls and Cows**. T
 2.**Install Dependencies**
    ```bash
      pip install flask
-```
+   ```
 3. **Run Application**
    ```bash
    python app.py
