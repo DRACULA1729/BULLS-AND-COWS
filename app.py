@@ -66,7 +66,7 @@ def game():
         session['guesses'] = guesses
 
         if cows == num_digits:
-            return render_template('game.html', guesses=guesses, success="Congratulations! You've guessed the secret number.")
+            return render_template('game.html', guesses=guesses, success=True)
 
     return render_template('game.html', guesses=guesses)
 
